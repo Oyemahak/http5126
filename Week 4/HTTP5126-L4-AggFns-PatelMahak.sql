@@ -2,16 +2,16 @@
 
 -- 1
 -- A
-SELECT MIN(price) AS 'Lowest Price' FROM stock_item;
+SELECT MIN(price) FROM stock_item;
 
 -- B
-SELECT MAX(inventory) AS 'Greatest Quantity' FROM stock_item;
+SELECT MAX(inventory) FROM stock_item;
 
 -- C
-SELECT AVG(price) AS 'Average Price' FROM stock_item;
+SELECT AVG(price) FROM stock_item;
 
 -- D
-SELECT SUM(inventory) AS 'Total Inventory' FROM stock_item;
+SELECT SUM(inventory) FROM stock_item;
 
 
 -- 2
@@ -40,10 +40,10 @@ HAVING SUM(inventory) < 100 AND AVG(price) < 100;
 
 -- 4
 -- A
-SELECT item AS 'Product', 
-       CONCAT('$', FORMAT(price, 2)) AS 'Price', 
-       inventory AS 'Stock Remaining', 
-       category AS 'Species', 
-       CONCAT('$', FORMAT(price * inventory, 2)) AS 'Potential Earnings'
+SELECT item AS Product, 
+       CONCAT('$', price) AS Price, 
+       inventory AS Stock_Remaining, 
+       category AS Species, 
+       CONCAT('$', price * inventory) AS Potential_Earnings
 FROM stock_item 
-ORDER BY (price * inventory) DESC;
+ORDER BY price * inventory DESC;
