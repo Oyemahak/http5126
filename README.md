@@ -1,18 +1,18 @@
-# Intro to Web Development
+# Database Design & Development
 
-This repository contains my work from the **Intro to Web Development** course. In this course, I am learning about **CLI tools**, **Docker**, **accessibility**, and the foundational concepts of web development, focusing on building and deploying websites.
+This repository contains the work for my **Database Design & Development** course. The focus of this course is learning **SQL** and how to structure databases, write queries, and optimize them for performance.
 
-### Key Learnings:
-- Command Line Interface (CLI)
-- Docker basics
-- Web development accessibility
+### Key Topics:
+- SQL Queries
+- Database normalization
+- Entity-Relationship (ER) Diagrams
 
-### Professor: Bernard Monette
+### Professor: Matthew Bebis
 
-## Installation
-Clone this repository to begin working with introductory web development topics.
+## Setting Up
+Clone the repo and set up the database locally.
 
 ```bash
-git clone https://github.com/Oyemahak/http5110
-cd http5110
-# Set up your environment as per repository instructions
+git clone https://github.com/Oyemahak/http5126
+cd http5126
+# Set up your local database environment as described in the repository
