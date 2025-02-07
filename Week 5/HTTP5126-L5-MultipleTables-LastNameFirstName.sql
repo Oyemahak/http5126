@@ -6,7 +6,7 @@
 -- A 
 SELECT * FROM sale WHERE stock_item_id = 1014;
 -- B 
-SELECT sale.date, stock_item.stock_item_id FROM sale 
+SELECT sale.date, stock_item.name FROM sale 
 INNER JOIN stock_item ON sale.stock_item_id = stock_item.stock_item_id 
 WHERE sale.stock_item_id = 1014;
 
