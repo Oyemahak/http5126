@@ -53,17 +53,17 @@ ORDER BY total_sales DESC;
 
 --  5
 -- A
-SELECT sale.date, stock_item.name, stock_item.price, stock_item.category, employee.first_name 
-FROM sale 
-INNER JOIN stock_item ON sale.stock_item_id = stock_item.stock_item_id 
-INNER JOIN employee ON sale.employee_id = employee.employee_id 
-WHERE employee.employee_id = (
-    SELECT sale.employee_id 
+SELECT s.date, si.name AS item_name, si.price, si.category, e.first_name 
+FROM sale AS s 
+INNER JOIN stock_item AS si ON s.stock_item_id = si.stock_item_id 
+INNER JOIN employee AS e ON s.employee_id = e.employee_id 
+INNER JOIN (
+    SELECT employee_id, COUNT(*) AS total_sales 
     FROM sale 
-    GROUP BY sale.employee_id 
-    ORDER BY COUNT(sale.sale_id) DESC 
+    GROUP BY employee_id 
+    ORDER BY total_sales DESC 
     LIMIT 1
-);
+) AS top_seller ON s.employee_id = top_seller.employee_id;
 
 -- B
 SELECT stock_item.stock_item_id, stock_item.name, stock_item.price, stock_item.category, COUNT(sale.sale_id) AS times_sold 
