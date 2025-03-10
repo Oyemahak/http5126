@@ -79,7 +79,7 @@ INSERT INTO order_product (order_id, product_id) VALUES
 
 -- 3 
 --  A 
-ALTER TABLE product ADD CONSTRAINT chk_price CHECK (price >= 0);
+ALTER TABLE product ADD CONSTRAINT check_price CHECK (price >= 0);
 
 --  B 
 UPDATE order_product
