@@ -59,14 +59,14 @@ CREATE TRIGGER log_update_stock_item
 BEFORE UPDATE ON stock_item
 FOR EACH ROW
 INSERT INTO stock_item_log (action, stock_item_id, old_name, old_price, old_inventory, old_category, timestamp)
-VALUES ('Update', OLD.stock_item_id, OLD.name, OLD.price, OLD.inventory, OLD.category, NOW());
+VALUES ('Update', old.stock_item_id, old.name, old.price, old.inventory, old.category, NOW());
 
 -- C 
 CREATE TRIGGER log_delete_stock_item
 BEFORE DELETE ON stock_item
 FOR EACH ROW
 INSERT INTO stock_item_log (action, stock_item_id, old_name, old_price, old_inventory, old_category, timestamp)
-VALUES ('Delete', OLD.stock_item_id, OLD.name, OLD.price, OLD.inventory, OLD.category, NOW());
+VALUES ('Delete', old.stock_item_id, old.name, old.price, old.inventory, old.category, NOW());
 
 --  5
 -- Run the queries in part A below before completing part 5B. 
