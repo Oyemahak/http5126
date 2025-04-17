@@ -22,12 +22,17 @@ BEGIN
 END//
 DELIMITER ;
 
--- Test the trigger
+-- ================================
+-- Test Insert for Attendance Alert Trigger
+-- ================================
 INSERT INTO attendance (student_id, class_id, date, status) VALUES
 (1, 1, '2023-10-06', 'Absent'),
 (1, 1, '2023-10-09', 'Absent'); -- Should trigger alert on 3rd absence
 
+
+-- ================================
 -- Test 2: Grade Calculation View
+-- ================================
 CREATE OR REPLACE VIEW vw_final_grades AS
 SELECT 
     s.student_id,
@@ -48,14 +53,15 @@ JOIN class cl ON a.class_id = cl.class_id
 JOIN course c ON cl.course_id = c.course_id
 GROUP BY s.student_id, c.course_id;
 
--- Verify view
+-- ================================
+-- Verify Final Grades View
+-- ================================
 SELECT * FROM vw_final_grades;
 
 
-
-
---Extra view as per proposal
--- Student Progress View (Matches proposal)
+-- ================================
+-- Extra View: Student Progress View
+-- ================================
 CREATE VIEW vw_student_progress AS
 SELECT 
     s.student_id,
@@ -74,13 +80,15 @@ LEFT JOIN grade g ON s.student_id = g.student_id
     AND g.assignment_id IN (SELECT assignment_id FROM assignment WHERE class_id = c.class_id)
 GROUP BY s.student_id, c.class_id;
 
--- Verify view
+-- ================================
+-- Verify Student Progress View
+-- ================================
 SELECT * FROM vw_student_progress;
 
 
-
-
--- MySQL’s CHECK constraints can’t reference another table, so you’ll need a trigger:
+-- ================================
+-- Trigger: Grade Before Insert Validation
+-- ================================
 DELIMITER //
 CREATE TRIGGER trg_grade_before_insert
 BEFORE INSERT ON grade
@@ -98,9 +106,9 @@ END;//
 DELIMITER ;
 
 
---Reset Test
-
--- 1. Delete ONLY the test attendance records for student_id=1 in class_id=1
+-- ================================
+-- Reset Test Data: Delete Test Attendance Records
+-- ================================
 DELETE FROM attendance 
 WHERE student_id = 1 
 AND class_id = 1 

@@ -1,9 +1,13 @@
+-- ========================================
 -- Create fresh database
+-- ========================================
 DROP DATABASE IF EXISTS canstem_school;
 CREATE DATABASE canstem_school;
 USE canstem_school;
 
+-- =====================
 -- Student table (exact match)
+-- =====================
 CREATE TABLE student (
     student_id INT PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(50) NOT NULL,
@@ -12,7 +16,9 @@ CREATE TABLE student (
     email VARCHAR(100) NOT NULL UNIQUE
 );
 
+-- =====================
 -- Teacher table (exact match)
+-- =====================
 CREATE TABLE teacher (
     teacher_id INT PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(50) NOT NULL,
@@ -21,7 +27,9 @@ CREATE TABLE teacher (
     hire_date DATE NOT NULL
 );
 
+-- =====================
 -- Course table (exact match)
+-- =====================
 CREATE TABLE course (
     course_id CHAR(20) PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -29,7 +37,9 @@ CREATE TABLE course (
     credits INT NOT NULL CHECK (credits BETWEEN 0 AND 4)
 );
 
+-- =====================
 -- Class table (exact match)
+-- =====================
 CREATE TABLE class (
     class_id INT PRIMARY KEY AUTO_INCREMENT,
     course_id CHAR(20) NOT NULL,
@@ -41,7 +51,9 @@ CREATE TABLE class (
     FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id)
 );
 
+-- =====================
 -- Assignment table (exact match)
+-- =====================
 CREATE TABLE assignment (
     assignment_id INT PRIMARY KEY AUTO_INCREMENT,
     class_id INT NOT NULL,
@@ -52,7 +64,9 @@ CREATE TABLE assignment (
     FOREIGN KEY (class_id) REFERENCES class(class_id)
 );
 
+-- =====================
 -- Enrollment table (exact match)
+-- =====================
 CREATE TABLE enrollment (
     enrollment_id INT PRIMARY KEY AUTO_INCREMENT,
     student_id INT NOT NULL,
@@ -63,7 +77,9 @@ CREATE TABLE enrollment (
     UNIQUE KEY (student_id, class_id)
 );
 
+-- =====================
 -- Attendance table (exact match)
+-- =====================
 CREATE TABLE attendance (
     attendance_id INT PRIMARY KEY AUTO_INCREMENT,
     student_id INT NOT NULL,
@@ -76,7 +92,9 @@ CREATE TABLE attendance (
     UNIQUE KEY (student_id, class_id, date)
 );
 
+-- =====================
 -- Grade table (exact match)
+-- =====================
 CREATE TABLE grade (
     grade_id INT PRIMARY KEY AUTO_INCREMENT,
     assignment_id INT NOT NULL,
