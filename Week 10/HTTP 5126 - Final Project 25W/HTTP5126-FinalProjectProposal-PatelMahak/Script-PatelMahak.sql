@@ -292,7 +292,7 @@ GROUP BY s.student_id, c.class_id;
 
 -- ================================
 -- Test Insert for Attendance Alert Trigger
--- (Comment out this insert to get error free executuion)
+-- (Comment out this insert to get error-free execution)
 -- ===============================
 INSERT INTO attendance (student_id, class_id, date, status) VALUES
 (1, 1, '2023-10-06', 'Absent'),
