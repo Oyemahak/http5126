@@ -1,19 +1,17 @@
-/*
-* CANSTEM SCHOOL DATABASE SYSTEM
-* HTTP 5126 Final Project
-* Student: Mahak Patel
-* Date: April 2025
-* 
-* Features Demonstrated:
-* - Real-time attendance alerts (trigger)
-* - Automated grade calculations (view)
-* - Student progress tracking (view)
-*/
+-- ========================================
+-- Canstem School Databse System
+-- HTTP 5126 Final Project
+-- Student: Mahak Patel
+-- Date: 20 April 2025
+-- Features Demonstrated:
+-- 1. Real-time attendance alerts (trigger)
+-- 2. Automated grade calculations (view)
+-- 3. Student progress tracking (view)
+-- ========================================
 
 -- ========================================
 -- Create database
 -- ========================================
-DROP DATABASE IF EXISTS canstem_school;
 CREATE DATABASE canstem_school;
 USE canstem_school;
 
@@ -290,13 +288,14 @@ GROUP BY s.student_id, c.class_id;
 -- DEMONSTRATION QUERIES
 -- ================================
 
--- ================================
+-- =============================================================================
 -- Test Insert for Attendance Alert Trigger
--- (Comment out this insert to get error-free execution)
--- ===============================
-INSERT INTO attendance (student_id, class_id, date, status) VALUES
-(1, 1, '2023-10-06', 'Absent'),
-(1, 1, '2023-10-09', 'Absent'); -- Should trigger alert on 3rd absence
+-- *****(Uncomment to test trigger - will generate alert on 3rd absence)*****
+-- =============================================================================
+
+-- INSERT INTO attendance (student_id, class_id, date, status) VALUES
+-- (1, 1, '2023-10-06', 'Absent'),
+-- (1, 1, '2023-10-09', 'Absent'); -- Should trigger alert on 3rd absence
 
 -- ================================
 -- To Verify Final Grades View
