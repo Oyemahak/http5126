@@ -32,3 +32,12 @@ DELETE FROM attendance
 WHERE student_id = 1 
 AND class_id = 1 
 AND date >= '2023-10-04'; -- This removes any previously inserted test records
+
+
+-- ================================
+-- Reset Test Data: Delete Test Attendance Records
+-- ================================
+DELETE FROM attendance 
+WHERE student_id = 1 
+AND class_id = 1 
+AND date >= '2023-10-04'; -- This removes any previously inserted test records
